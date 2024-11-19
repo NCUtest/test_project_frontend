@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: frontend_app
+    ports:
+      - "3000:3000"
+    volumes:
+      # 只幫定src, 避免綁定build
+      - ./src:/app/src
+        #      - ./node_modules:/app/node_modules
+    command: npm start
+    environment:
+      - NODE_ENV=development
+
